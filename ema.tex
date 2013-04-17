@@ -20,7 +20,7 @@
 %\bibliographystyle{apalike}
 %------- metainformation ---------%
 
-\title[EMA]{Designing optimal cell factories: integer programming couples elementary mode analysis with regulation\\~\\}
+\title[Elementary flux mode analysis]{Designing optimal cell factories: integer programming couples elementary mode analysis with regulation\\~\\}
 \subtitle{Molecular Networks B SS13}
 \author[Jonas Ibn-Salem]{Jonas Ibn-Salem}
 \institute[]{}
@@ -33,13 +33,172 @@
 %\frame{\titlepage}
 \maketitle
 
+% OUTLINE:
+%- Metabolically engineering: 
+%  - strain improvement 
+%  - efficient deletion strategies
+% -steady state assumption, 
+% -elementary mode (EM)
+% -constrained minimal cut sets
+% -network of minimal functionality
+% -advantage of inclusion of regulatory information
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Preface stuff:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{Paper and authors}
+    \includegraphics[width=1\textwidth]{grafik/paper}
+    \begin{columns}
+    \column{.3\textwidth}
+      \begin{center}
+        \begin{figure}
+         \includegraphics[width=0.5\textwidth]{grafik/jungreuthmayer} \\
+         \tiny{source: biotec.boku.ac.at}
+        \end{figure}
+      \end{center}
+    \column{.3\textwidth}
+      \begin{center}
+        \begin{figure}
+         \includegraphics[width=0.5\textwidth]{grafik/zanghellini} \\
+         \tiny{source: biotec.boku.ac.at}
+        \end{figure}
+      \end{center}
+    \column{.3\textwidth}
+    \tiny {$^{1}$ Austrian Centre of Industrial 
+        Biotechnology, Vienna, Austria} 
+    \\ ~ \\
+    \tiny {$^{2}$ Department of Biotechnology, 
+        University of Natural Resources and Life Sciences, 
+        Vienna, Austria} 
+ \end{columns}
+\end{frame}
 
 \begin{frame}{Overview}
     \tableofcontents
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Introduction}
+\section{Background and Motivation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{Background and Motivation}
+    \begin{itemize}
+        \item microbes can be used for metabolic engineering 
+        e.g. ethanol production in \emph{E. coli}
+        \item Methabolic networks are available for some model organisms
+    \end{itemize}
+    \begin{block}{Gaol}
+        Gene deletion strategie to optimize the production 
+        efficiency of strains.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Metabolic network and steady state assumption}
+    \begin{columns}
+    \column{.7\textwidth}    
+        Model of metabolic network with
+        \begin{itemize}
+            \item $m$ internal metabolites
+            \item $n$ reactions
+            \item $S \in \mathbb{R}^{m\times n}$ stoichiometric matrix
+            \item $\hat{v} \in \mathbb{R}^{n}$ flux vector
+        \end{itemize}
+    \column{.3\textwidth}    
+        fig?
+    \end{columns}
+    
+    \begin{block}{Steady state assumption}
+        Assume metabolite concentrations and reaction rates are constant.
+    \end{block}
+    \begin{equation}
+    %\Rightarrow 
+    S \cdot \hat{v} = 0 
+    \end{equation}
+\end{frame}
+
+\begin{frame}{Elementary mode analysis}
+    \begin{definition}
+        An elementary mode (EM) is a minimal and indivisible set 
+        of reactions that operates under steady state conditions, 
+        while obeying all (ir-)reersibility constraints.
+    \end{definition}
+\end{frame}
+
+\begin{frame}{Network of minimal functionality (NMF)}
+    
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Theory}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{Theory: Elementary mode analysis}
+    $e = e(\hat{e}) $ is the binary representation of a EM $e$.
+    \begin{equation}
+        e_{i} := e(\hat{e}_{i})) = 
+        \begin{cases}
+            1 & \text{if }  \hat{e}_{i} \neq 0 \\
+            0 & \text{if }  \hat{e}_{i} = 0 
+        \end{cases}
+    \end{equation}
+    $ e^{T}v \leq e^{T}e = \sum_{i=1}^{n} e_{i}^{2} = \sum_{i=1}^{n} e_{i} =: ||e||$
+
+\end{frame}
+
+\begin{frame}{Binary integer program}
+    Group all $q$ elementary modes:
+    \begin{align*}
+        G &:= (e_{1}, ..., e_{r})^{T}            &\text{\emph{goal matrix} with desirable EM}   &\\
+        H &:= (e_{r+1}, ..., e_{r+s})^{T}        &\text{\emph{helper matrix} tolerated EM}      &\\
+        K &:= (e_{r+s+1}, ..., e_{r+s+t})^{T}    &\text{\emph{kill matrix} unwanted EM}         &\\
+    \end{align*}
+    
+$max ||x||$ \\
+s.t. 
+\begin{align*}
+    e^{T}_{g} x & =       ||e_{g}||      & g \in \{1, ..., r\}     &~\\
+    e^{T}_{h} x & \leq    ||e_{h}||     & h \in \{r+1, ..., r+s\} &~\\
+    e^{T}_{k} x & \leq    ||e_{k}||-1  & k \in \{r+s+1, ..., r+s+t\} &~\\
+\end{align*}
+
+ 
+    
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Illustrative example}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{Illustrative example}
+    \includegraphics[width=.9\textwidth]{grafik/fig1} \\
+\end{frame}
+
+
+\begin{frame}{Elementary Modes}
+    \includegraphics[width=.9\textwidth]{grafik/fig2} \\
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Including regulation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{(Optimizing metabolic functionality)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Results of realistic example}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Discussion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Summary and conclusions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{frame}{Introduction: Fixed Point Analysis}
     Given the system of differential equations:

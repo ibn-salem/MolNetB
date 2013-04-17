@@ -1,3 +1,10 @@
 \beamer@endinputifotherversion {3.10pt}
 \select@language {english}
-\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {1}{Background and Motivation}{4}{0}{1}
+\beamer@sectionintoc {2}{Theory}{8}{0}{2}
+\beamer@sectionintoc {3}{Illustrative example}{10}{0}{3}
+\beamer@sectionintoc {4}{Including regulation}{12}{0}{4}
+\beamer@sectionintoc {5}{(Optimizing metabolic functionality)}{12}{0}{5}
+\beamer@sectionintoc {6}{Results of realistic example}{12}{0}{6}
+\beamer@sectionintoc {7}{Discussion}{12}{0}{7}
+\beamer@sectionintoc {8}{Summary and conclusions}{12}{0}{8}
