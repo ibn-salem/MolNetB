@@ -1,0 +1,70 @@
+\documentclass{beamer}
+%%%%%%%%%%%%%%%%%%%%%%
+% basic tutorial in german: http://www2.informatik.hu-berlin.de/~mischulz/beamer.html
+%%%%%%%%%%%%%%%%%%%%%%
+
+%------- packages ---------%
+\usepackage[english]{babel}         %Umlaute, neue deutsche Rechtschreibung
+\usepackage[utf8x]{inputenc}        %Kodierung festlegen, für UTF-8 Unterstützung entsprechend 
+\usepackage{amsmath,amsfonts,amssymb}   %math. Symbole und Umgebungen
+\usepackage{graphicx}
+%\usepackage{natbib}
+
+%------- theme and style ---------%
+\usetheme{Boadilla}  %% Themenwahl
+\usecolortheme{default}
+\usefonttheme{default}
+\useinnertheme{circles}     %	{circles | default | inmargin |	rectangles | rounded}
+\useoutertheme{default} %	default | infolines | miniframes | shadow | sidebar | smoothbars |smoothtree | split | tree}
+%\beamertemplatenavigationsymbolsempty   % disable navigation simbols
+%\bibliographystyle{apalike}
+%------- metainformation ---------%
+
+\title[EMA]{Designing optimal cell factories: integer programming couples elementary mode analysis with regulation\\~\\}
+\subtitle{Molecular Networks B SS13}
+\author[Jonas Ibn-Salem]{Jonas Ibn-Salem}
+\institute[]{}
+\date{25.04.13}
+%\logo{\pgfimage[width=2cm,height=0.5cm]{grafik/FULogo_RGB}}
+\titlegraphic{\includegraphics[width=4cm,height=1cm]{grafik/FULogo_RGB}}
+
+
+\begin{document}
+%\frame{\titlepage}
+\maketitle
+
+
+\begin{frame}{Overview}
+    \tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{Introduction: Fixed Point Analysis}
+    Given the system of differential equations:
+    $$y' = f(y) $$
+    \begin{definition}
+        A \emph{fixed point $y^*$} is defined by $f(y^*)=0$.
+    \end{definition}
+    %$\Rightarrow$ 
+    \begin{itemize}
+        \item Solve the equation $f(y) = 0$ 
+        \item Analyse eigenvalues of the Jacobian at fixed points.
+    \end{itemize}
+    Now: System with \emph{controle parameter} $\mu$. 
+    $$y' = f(y, \mu)$${}    
+    \begin{block}{}
+        How does $\mu$ influence the number, location and stability of fixed points?
+    \end{block}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Stuff:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{Elementary flux mode}
+    For $v \in R$
+\end{frame}
+\end{document}
+
