@@ -91,7 +91,11 @@
     \end{block}
 \end{frame}
 
-\begin{frame}{Metabolic network and steady state assumption}
+\begin{frame}{Metabolic network}
+    \includegraphics[width=\textwidth]{grafik/modelling} \\
+    \footnotesize{
+        source A.Bockmayer lecture slides Algorithms in Systembiology SS12
+        }
     \begin{columns}
     \column{.7\textwidth}    
         Model of metabolic network with
@@ -104,22 +108,38 @@
     \column{.3\textwidth}    
         fig?
     \end{columns}
-    
+\end{frame}
+
+\begin{frame}{Steady state assumption}    
     \begin{block}{Steady state assumption}
-        Assume metabolite concentrations and reaction rates are constant.
+        Metabolite concentrations and reaction rates are constant.
     \end{block}
     \begin{equation}
     %\Rightarrow 
     S \cdot \hat{v} = 0 
     \end{equation}
+    Steady state flux coen: \\
+    $C = \{v \in \mathbb{R}^n | Sv = 0, v_i \geq 0, i \in Irr \}$
 \end{frame}
 
 \begin{frame}{Elementary mode analysis}
+    \begin{itemize}
+        \item For $v \in \mathbb{R}^n$, the support of v is defined as 
+        $supp(v) = \{i \in \{1, ..., n \} | v_i \neq 0  \}$
+    
+        \item $v \in C$ is an \emph{elementary flux mode} if $supp(v)$
+        is minimla w.r.t $\subseteq$
+        i.e, if there is no $v' \in C, v' \neq 0$ with 
+        $supp(v') \subsetneq supp(v)$.
+    \end{itemize}
+    
+    
     \begin{definition}
         An elementary mode (EM) is a minimal and indivisible set 
         of reactions that operates under steady state conditions, 
-        while obeying all (ir-)reersibility constraints.
+        while obeying all (ir-)reversibility constraints.
     \end{definition}
+    
 \end{frame}
 
 \begin{frame}{Network of minimal functionality (NMF)}
