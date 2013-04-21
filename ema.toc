@@ -1,9 +1,0 @@
-\beamer@endinputifotherversion {3.10pt}
-\select@language {english}
-\beamer@sectionintoc {1}{Introduction and Repetition}{3}{0}{1}
-\beamer@sectionintoc {2}{Motivation and Theory}{8}{0}{2}
-\beamer@sectionintoc {3}{Illustrative example}{14}{0}{3}
-\beamer@sectionintoc {4}{Including regulation}{16}{0}{4}
-\beamer@sectionintoc {5}{(Optimizing metabolic functionality)}{16}{0}{5}
-\beamer@sectionintoc {6}{Realistic example: Ethanol production in E. coli}{16}{0}{6}
-\beamer@sectionintoc {7}{Summary and conclusions}{16}{0}{7}
