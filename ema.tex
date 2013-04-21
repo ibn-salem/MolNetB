@@ -45,51 +45,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Preface stuff:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{frame}{Paper and authors}
-    \includegraphics[width=1\textwidth]{grafik/paper}
-    \begin{columns}
-    \column{.3\textwidth}
-      \begin{center}
-        \begin{figure}
-         \includegraphics[width=0.5\textwidth]{grafik/jungreuthmayer} \\
-         \tiny{source: biotec.boku.ac.at}
-        \end{figure}
-      \end{center}
-    \column{.3\textwidth}
-      \begin{center}
-        \begin{figure}
-         \includegraphics[width=0.5\textwidth]{grafik/zanghellini} \\
-         \tiny{source: biotec.boku.ac.at}
-        \end{figure}
-      \end{center}
-    \column{.3\textwidth}
-    \tiny {$^{1}$ Austrian Centre of Industrial 
-        Biotechnology, Vienna, Austria} 
-    \\ ~ \\
-    \tiny {$^{2}$ Department of Biotechnology, 
-        University of Natural Resources and Life Sciences, 
-        Vienna, Austria} 
- \end{columns}
-\end{frame}
 
 \begin{frame}{Overview}
     \tableofcontents
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Background and Motivation}
+\section{Introduction and Repetition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{frame}{Background and Motivation}
-    \begin{itemize}
-        \item microbes can be used for metabolic engineering 
-        e.g. ethanol production in \emph{E. coli}
-        \item Methabolic networks are available for some model organisms
-    \end{itemize}
-    \begin{block}{Gaol}
-        Gene deletion strategie to optimize the production 
-        efficiency of strains.
-    \end{block}
-\end{frame}
 
 \begin{frame}{Metabolic network}
     \includegraphics[width=\textwidth]{grafik/modelling} \\
@@ -141,15 +104,76 @@
     \end{definition}
     
 \end{frame}
+\begin{frame}{Elementary mode example}
+    \includegraphics[width=.7\textwidth]{grafik/EMnet1}
+    \begin{itemize}
+        \item $m^{1} = (1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0 ,0)$
+        \item $m^{1} = (0, 0, 0, -1, 0, 1, 1, 0, 0, 0, 0 ,0)$
+        \item $m^{1}$ and $m^{2}$ are elementary modes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Elementary mode example (ctd)}
+    \includegraphics[width=.7\textwidth]{grafik/EMnet2}
+    \begin{itemize}
+        \item $m^{3} = (0, 0, 2, 0, 2, 0, 0, 0, 1, 1, 1 ,1)$
+        \item $m^{3} = m^{4} + m^{5}$, with
+        \begin{itemize}
+            \item $ m^{4} = (0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0 ,0)$
+            \item $ m^{5} = (0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1 ,1)$
+        \end{itemize}
+        \item Since $m^{4}, m^{5} \in C, supp(m^{4}), supp(m^{5}) \subsetneq supp(m^{3})$, $m^{3}$ is not an elementary flux mode.
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Motivation and Theory}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{frame}{Paper and authors}
+    \includegraphics[width=1\textwidth]{grafik/paper}
+    \begin{columns}
+    \column{.3\textwidth}
+      \begin{center}
+        \begin{figure}
+         \includegraphics[width=0.5\textwidth]{grafik/jungreuthmayer} \\
+         \tiny{source: biotec.boku.ac.at}
+        \end{figure}
+      \end{center}
+    \column{.3\textwidth}
+      \begin{center}
+        \begin{figure}
+         \includegraphics[width=0.5\textwidth]{grafik/zanghellini} \\
+         \tiny{source: biotec.boku.ac.at}
+        \end{figure}
+      \end{center}
+    \column{.3\textwidth}
+    \tiny {$^{1}$ Austrian Centre of Industrial 
+        Biotechnology, Vienna, Austria} 
+    \\ ~ \\
+    \tiny {$^{2}$ Department of Biotechnology, 
+        University of Natural Resources and Life Sciences, 
+        Vienna, Austria} 
+ \end{columns}
+\end{frame}
+
+\begin{frame}{Background and Motivation}
+    \begin{itemize}
+        \item microbes can be used for metabolic engineering 
+        e.g. ethanol production in \emph{E. coli}
+        \item Methabolic networks are available for some model organisms
+    \end{itemize}
+    \begin{block}{Gaol}
+        Gene deletion strategie to optimize the production 
+        efficiency of strains.
+    \end{block}
+\end{frame}
+
 
 \begin{frame}{Network of minimal functionality (NMF)}
     
 \end{frame}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Theory}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{frame}{Theory: Elementary mode analysis}
     $e = e(\hat{e}) $ is the binary representation of a EM $e$.
     \begin{equation}
@@ -182,7 +206,7 @@ s.t.
     e^{T}_{h} x & \leq    ||e_{h}||     & h \in \{r+1, ..., r+s\} &~\\
     e^{T}_{k} x & \leq    ||e_{k}||-1  & k \in \{r+s+1, ..., r+s+t\} &~\\
 \end{align*}
-
+$x = (x_{1}, ..., x_{n})^{T}, \quad x_{i} \in \{0, 1\} \forall i$
 %where
 %\begin{align*}
 %    |g| &= (||e_1||, ..., ||e_r||)^T \\
@@ -283,24 +307,13 @@ s.t.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Including regulation}
+\section{Including regulation and optimizing metabolic functionality}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{(Optimizing metabolic functionality)}
+\section{Realistic example: Ethanol production in E. coli}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Results of realistic example}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Discussion}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Summary and conclusions}
