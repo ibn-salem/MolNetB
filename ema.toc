@@ -2,9 +2,9 @@
 \select@language {english}
 \beamer@sectionintoc {1}{Background and Motivation}{4}{0}{1}
 \beamer@sectionintoc {2}{Theory}{9}{0}{2}
-\beamer@sectionintoc {3}{Illustrative example}{11}{0}{3}
-\beamer@sectionintoc {4}{Including regulation}{13}{0}{4}
-\beamer@sectionintoc {5}{(Optimizing metabolic functionality)}{13}{0}{5}
-\beamer@sectionintoc {6}{Results of realistic example}{13}{0}{6}
-\beamer@sectionintoc {7}{Discussion}{13}{0}{7}
-\beamer@sectionintoc {8}{Summary and conclusions}{13}{0}{8}
+\beamer@sectionintoc {3}{Illustrative example}{13}{0}{3}
+\beamer@sectionintoc {4}{Including regulation}{21}{0}{4}
+\beamer@sectionintoc {5}{(Optimizing metabolic functionality)}{21}{0}{5}
+\beamer@sectionintoc {6}{Results of realistic example}{21}{0}{6}
+\beamer@sectionintoc {7}{Discussion}{21}{0}{7}
+\beamer@sectionintoc {8}{Summary and conclusions}{21}{0}{8}

@@ -163,15 +163,19 @@
 
 \end{frame}
 
-\begin{frame}{Binary integer program}
+\begin{frame}{Binary linear program (BLP)}
     Group all $q$ elementary modes:
     \begin{align*}
         G &:= (e_{1}, ..., e_{r})^{T}            &\text{\emph{goal matrix} with desirable EM}   &\\
         H &:= (e_{r+1}, ..., e_{r+s})^{T}        &\text{\emph{helper matrix} tolerated EM}      &\\
         K &:= (e_{r+s+1}, ..., e_{r+s+t})^{T}    &\text{\emph{kill matrix} unwanted EM}         &\\
     \end{align*}
+where $q = r+s+t$
+\end{frame}
+
+\begin{frame}{Binary linear program (BLP)}
     
-$max ||x||$ \\
+$max ~||x||$ \\
 s.t. 
 \begin{align*}
     e^{T}_{g} x & =       ||e_{g}||      & g \in \{1, ..., r\}     &~\\
@@ -179,9 +183,37 @@ s.t.
     e^{T}_{k} x & \leq    ||e_{k}||-1  & k \in \{r+s+1, ..., r+s+t\} &~\\
 \end{align*}
 
- 
-    
+%where
+%\begin{align*}
+%    |g| &= (||e_1||, ..., ||e_r||)^T \\
+%    |h| &= (||e_{r+1}||, ..., ||e_{r+s}||)^T \\
+%    |k| &= (||e_{r+s+1}||, ..., ||e_{r+s+t}||)^T \\
+%\end{align*}
+
+\begin{align*}
+    \Delta_{min} = n - ||x||
+\end{align*}
+
 \end{frame}
+
+\begin{frame}{Alternative solutions}
+\begin{itemize}
+    \item The BLP may have no or a finite number of solutions.
+    \item Iteratively exclude existing solutions $x^{(j)}$ by adding constraints:
+\end{itemize}
+    
+    \begin{align*}
+        \sum_{i \in B} x_i & \leq |B| -1 \\
+        \sum_{i \in N} x_i & \geq 1   \\
+    \end{align*}
+    where 
+    \begin{align*}
+        B = \{i |x_{i}^{(j)} = 1\} \\
+        N = \{i |x_{i}^{(j)} = 0\} \\
+    \end{align*}
+
+\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Illustrative example}
@@ -191,9 +223,65 @@ s.t.
 \end{frame}
 
 
-\begin{frame}{Elementary Modes}
+\begin{frame}{Elementary modes}
     \includegraphics[width=.9\textwidth]{grafik/fig2} \\
 \end{frame}
+
+\begin{frame}{List of elementary modes}
+    \includegraphics[width=\textwidth]{grafik/table1a} \\
+\end{frame}
+
+\begin{frame}{List of binary elementary modes}
+    \includegraphics[width=\textwidth]{grafik/table1b} \\
+\end{frame}
+
+\begin{frame}{BLP for example network}
+    $$max \sum_{i=1}^{12} x_i$$
+     
+    \begin{align*}
+\text{subject to}\quad\quad\quad\quad
+    x_1 + x_4 + x_7 + x_8 + x_{12}                      & = 5   \\
+    \\
+    x_3 + x_4 + x_8                                     & \leq 3 \\
+    x_3 + x_4 + x_5 + x_9 + x_{11}                      & \leq 5 \\
+    x_3 + x_4 + x_6 + x_7 + x_9 + x_{10}                & \leq 6 \\
+    x_1 + x_4 + x_5 + x_7 + x_8 + x_9 + x_{11} + x_{12} & \leq 7 \\
+    x_1 + x_4 + x_6 + x_9 + x_{10} + x_{12}             & \leq 5 \\
+    \\
+    x_1 + x_2 + x_4 + x_8                               & \leq 3 \\
+    x_1 + x_2 + x_4 + x_5 + x_9 + x_{11}                & \leq 5 \\
+    x_1 + x_2 + x_4 + x_6 + x_7 + x_9 + x_{10}          & \leq 6 \\
+    \end{align*}
+\end{frame}
+
+
+\begin{frame}{Minimal cut sets}
+    \includegraphics[height=5cm]{grafik/table2a} \\
+\end{frame}
+
+\begin{frame}{Biological feasibility}
+    Problem:
+    \begin{itemize}
+        \item Distinguish chemical from genetic interventions
+        \item Gene-enzyme-reaction mapping not always known.
+    \end{itemize}
+    Solution: 
+    \begin{itemize}
+        \item add weights to objective function
+        $$max ||w^T x|| $$
+        \item low weights for uptake reactions
+        \item high weights for reactions with missing genetic information
+    \end{itemize}
+    \begin{example}
+        $$w_2^T = (0.1, ~ 0.1, ~ 0.1, ~ 99, ~ 1, ~ 99, ~ 2, ~ 1, ~ 99, ~ 1, ~ 1, ~ 99)$$
+    \end{example}
+\end{frame}
+
+\begin{frame}{Minimal cut sets wights wights}
+    \includegraphics[height=5cm]{grafik/table2} \\
+\end{frame}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Including regulation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -238,12 +326,11 @@ s.t.
     \end{block}
 \end{frame}
 
-
+\end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Stuff:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{frame}{Elementary flux mode}
-    For $v \in R$
-\end{frame}
-\end{document}
 
+%TODO:
+%    - irreversable reactions in model
+%   - constraints for binary variables in IP 

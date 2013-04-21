@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010 - mariux64) (format=pdflatex 2012.6.22)  18 APR 2013 18:58
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010 - mariux64) (format=pdflatex 2012.6.22)  19 APR 2013 18:10
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **ema.tex
 (./ema.tex
@@ -952,7 +951,7 @@ LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 
 [4
 
-] <grafik/modelling.png, id=185, 926.46124pt x 402.50375pt>
+] <grafik/modelling.png, id=184, 926.46124pt x 402.50375pt>
 File: grafik/modelling.png Graphic file (type png)
 
 <use grafik/modelling.png> [5
@@ -968,23 +967,56 @@ File: grafik/modelling.png Graphic file (type png)
 
 ] [10
 
-] <grafik/fig1.pdf, id=350, 341.75479pt x 270.5347pt>
+] [11
+
+] [12
+
+] <grafik/fig1.pdf, id=402, 341.75479pt x 270.5347pt>
 File: grafik/fig1.pdf Graphic file (type pdf)
 
 <use grafik/fig1.pdf>
-Overfull \vbox (7.26051pt too high) detected at line 191
+Overfull \vbox (7.26051pt too high) detected at line 223
  []
 
-[11
+[13
 
- <./grafik/fig1.pdf>] <grafik/fig2.pdf, id=382, 468.61674pt x 356.4778pt>
+ <./grafik/fig1.pdf>] <grafik/fig2.pdf, id=435, 468.61674pt x 356.4778pt>
 File: grafik/fig2.pdf Graphic file (type pdf)
 
-<use grafik/fig2.pdf> [12
+<use grafik/fig2.pdf> [14
 
- <./grafik/fig2.pdf>] [13
+ <./grafik/fig2.pdf>]
+<grafik/table1a.png, id=466, 1207.51125pt x 624.3325pt>
+File: grafik/table1a.png Graphic file (type png)
 
-] [14
+<use grafik/table1a.png> [15
+
+ <./grafik/table1a.png (PNG copy)>]
+<grafik/table1b.png, id=494, 1405.25pt x 630.355pt>
+File: grafik/table1b.png Graphic file (type png)
+ <use grafik/table1b.png>
+[16
+
+ <./grafik/table1b.png (PNG copy)>]
+Overfull \vbox (26.2309pt too high) detected at line 255
+ []
+
+[17
+
+] <grafik/table2a.png, id=547, 495.8525pt x 415.5525pt>
+File: grafik/table2a.png Graphic file (type png)
+
+<use grafik/table2a.png> [18
+
+ <./grafik/table2a.png (PNG copy)>] [19
+
+]
+<grafik/table2.png, id=603, 960.58875pt x 415.5525pt>
+File: grafik/table2.png Graphic file (type png)
+ <use grafik/table2.png>
+[20
+
+ <./grafik/table2.png (PNG copy)>] [21
 
 ]
 \tf@nav=\write5
@@ -996,10 +1028,10 @@ File: grafik/fig2.pdf Graphic file (type pdf)
 \tf@snm=\write7
 \openout7 = `ema.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 248.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 329.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 329.
  (./ema.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 248.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 329.
 Package rerunfilecheck Info: File `ema.out' has not changed.
 (rerunfilecheck)             Checksum: 427891352BAACAF1D40525CECB432A21;450.
 
@@ -1012,13 +1044,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 14234 strings out of 493747
- 258608 string characters out of 3143556
+ 14304 strings out of 493747
+ 259966 string characters out of 3143556
  353962 words of memory out of 3000000
- 17055 multiletter control sequences out of 15000+200000
+ 17107 multiletter control sequences out of 15000+200000
  13775 words of font info for 51 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 48i,16n,51p,372b,604s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,16n,63p,372b,610s stack positions out of 5000i,500n,10000p,200000b,50000s
 </package/mariux64/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></package/mariux64/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </package/mariux64/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><
@@ -1033,10 +1065,10 @@ e/mariux64/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></package
 ariux64/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></package/mar
 iux64/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></package/mariu
 x64/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on ema.pdf (14 pages, 802933 bytes).
+Output written on ema.pdf (21 pages, 1073526 bytes).
 PDF statistics:
- 521 PDF objects out of 1000 (max. 8388607)
- 469 compressed objects within 5 object streams
- 37 named destinations out of 1000 (max. 500000)
- 156 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 714 PDF objects out of 1000 (max. 8388607)
+ 648 compressed objects within 7 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 182 words of extra memory for PDF output out of 10000 (max. 10000000)
 
