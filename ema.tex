@@ -55,34 +55,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \begin{frame}{Metabolic network}
-    \includegraphics[width=\textwidth]{grafik/modelling} \\
-    \footnotesize{
-        source A.Bockmayer lecture slides Algorithms in Systembiology SS12
-        }
-    \begin{columns}
-    \column{.7\textwidth}    
-        Model of metabolic network with
-        \begin{itemize}
-            \item $m$ internal metabolites
-            \item $n$ reactions
-            \item $S \in \mathbb{R}^{m\times n}$ stoichiometric matrix
-            \item $\hat{v} \in \mathbb{R}^{n}$ flux vector
-        \end{itemize}
-    \column{.3\textwidth}    
-        fig?
-    \end{columns}
+	Model of metabolic network:
+	\begin{itemize}
+		\item $m$ internal metabolites
+		\item $n$ reactions
+		\item stoichiometric matrix $S \in \mathbb{R}^{m\times n}$
+		\item Set of irreversible reactions $Irr \subseteq \{1, ..., n\}$
+		\item $v_j \in \mathbb{R}$ flux through reacton $j$ at steady state
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Steady state assumption}    
-    \begin{block}{Steady state assumption}
+    \begin{block}{}
         Metabolite concentrations and reaction rates are constant.
     \end{block}
-    \begin{equation}
-    %\Rightarrow 
-    S \cdot \hat{v} = 0 
-    \end{equation}
-    Steady state flux coen: \\
-    $C = \{v \in \mathbb{R}^n | Sv = 0, v_i \geq 0, i \in Irr \}$
+    Steady state flux coen:
+    $$C = \{v \in \mathbb{R}^n | Sv = 0, v_i \geq 0, i \in Irr \}$$
+    \includegraphics[width=\textwidth]{grafik/modelling} \\
+    \hfill \tiny{source A.Bockmayer lecture slides Algorithms in Systembiology SS12}
 \end{frame}
 
 \begin{frame}{Elementary mode analysis}
@@ -103,9 +93,16 @@
         while obeying all (ir-)reversibility constraints.
     \end{definition}
     
+    \begin{itemize}
+    	\item Elementary modes correspond to minimal biological pathways
+    \end{itemize}
+    
 \end{frame}
 \begin{frame}{Elementary mode example}
     \includegraphics[width=.7\textwidth]{grafik/EMnet1}
+    \\
+    \hfill \tiny{source A.Bockmayer lecture slides Algorithms in Systembiology SS12}
+    \normalsize
     \begin{itemize}
         \item $m^{1} = (1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0 ,0)$
         \item $m^{1} = (0, 0, 0, -1, 0, 1, 1, 0, 0, 0, 0 ,0)$
@@ -115,6 +112,9 @@
 
 \begin{frame}{Elementary mode example (ctd)}
     \includegraphics[width=.7\textwidth]{grafik/EMnet2}
+    \\
+    \hfill \tiny{source A.Bockmayer lecture slides Algorithms in Systembiology SS12}
+    \normalsize
     \begin{itemize}
         \item $m^{3} = (0, 0, 2, 0, 2, 0, 0, 0, 1, 1, 1 ,1)$
         \item $m^{3} = m^{4} + m^{5}$, with
@@ -130,7 +130,7 @@
 \section{Motivation and Theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-\begin{frame}{Paper and authors}
+\begin{frame}{Paper}
     \includegraphics[width=1\textwidth]{grafik/paper}
     \begin{columns}
     \column{.3\textwidth}
@@ -159,10 +159,17 @@
 
 \begin{frame}{Background and Motivation}
     \begin{itemize}
-        \item microbes can be used for metabolic engineering 
+        \item Microbes can be used for metabolic engineering 
         e.g. ethanol production in \emph{E. coli}
         \item Methabolic networks are available for some model organisms
+    	\item Design a network of minimal functionality (NMF) by iteratively deleting elementary modes / pathways 
+		\item 
+			\begin{definition}
+				A \emph{minimal cut set} (MCS) is a mimial set of deletions, 
+				which block undesirable network functionality, like unwanted by-products
+			\end{definition}
     \end{itemize}
+
     \begin{block}{Gaol}
         Gene deletion strategie to optimize the production 
         efficiency of strains.
@@ -175,7 +182,7 @@
 \end{frame}
 
 \begin{frame}{Theory: Elementary mode analysis}
-    $e = e(\hat{e}) $ is the binary representation of a EM $e$.
+    $e = e(\hat{e}) $ is the binary representation of an EM $\hat{e}$.
     \begin{equation}
         e_{i} := e(\hat{e}_{i})) = 
         \begin{cases}
@@ -305,7 +312,6 @@ $x = (x_{1}, ..., x_{n})^{T}, \quad x_{i} \in \{0, 1\} \forall i$
     \includegraphics[height=5cm]{grafik/table2} \\
 \end{frame}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Including regulation and optimizing metabolic functionality}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -314,11 +320,89 @@ $x = (x_{1}, ..., x_{n})^{T}, \quad x_{i} \in \{0, 1\} \forall i$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Realistic example: Ethanol production in E. coli}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{frame}{Realistic example: Ethanol production in E. coli}
+	\begin{itemize}
+		\item Efficient production of ethanol from glucose in \emph{E.coli}
+		\item Small scale metabolic network under anaerobic conditions
+		\begin{itemize}
+			\item 5,010 EM given
+			\item 12 EM contribute to the optimal design
+			\item Network of minimal functionality known with seven knock-outs
+		\end{itemize}
+	\begin{block}{Problem}
+		 Find optimal strain design with minimal number of knock-outs 
+	\end{block}
+
+		\item BLP model:
+		\begin{itemize}
+			\item $G$ contains the 12 optimal EMs
+			\item $H=0$
+			\item $G$ contains all remaing 4,998 EMs
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Ethanol production in E. coli: Results}
+	\begin{itemize}
+	\item $\Rightarrow$ 1,048 MCS (252 with seven deletions)
+	\item 71\% are not deletable due to missing annotations
+	\end{itemize}
+With weight function (models biological feasibility):
+	\begin{itemize}
+		\item 8 MCS with 7 feasible gene deletions		
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Realistic example: Full model}
+Repeat analysis with full \emph{E.coli} model (without restriction to glucose uptake under unaerobic conditions)
+\begin{itemize}
+	\item 429,276 EM (disregarding two substrate cycles) %futile cycle)
+	\item $\Rightarrow$ 55,488 MCS (1,440 with minmal number of 11 reaction deletions)
+	\item $\Rightarrow$ 27\% of all and none of optimal MCS are fully annotated
+	\item With weight function:
+	\begin{itemize}
+		\item 12 reaction deletions
+		\item 5 out of the 12 are uptake reactions
+	\end{itemize}
+\end{itemize}
+$\Rightarrow$ Recovers the original model with anaerobic growth on glucose
+
+\end{frame}
+
+\begin{frame}{Complexity and runtime}
+\begin{itemize}
+	\item BLP is a special case of integer liner programming (ILP) which is NP-complete 
+	\item Number of EM explodes combinatorially with system size \\
+	 $\Rightarrow$ EM analysis restricted to 
+	small scale networks with $\sim 100$ reactions/variables
+	\item Efficient solvers compress redundant constraints in preprocessing
+	\begin{itemize}
+		\item Full \emph{E.coli} model: 420,276 constraints for 71 variables
+		\item Transformed into 28 constraints for 34 variables
+	\end{itemize}
+	\item Method is still scalable: \\
+	Finds all 2.304 MCS in model with 271 million EM in 122 seconds 
+\end{itemize}
+$\Rightarrow$ Problem is the calculation of the all EM
+\end{frame}
+
+
+\begin{frame}{Limitations}
+	\begin{itemize}
+		\item Elementary modes have to be computed first
+		\item Optimal EMs have to be known
+		\item Some regulatory information like Feedback-Loops can not be modeled
+	\end{itemize}
+\end{frame}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Summary and conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
+\begin{frame}{Summary and conclusion}
+	%\item metabolic networks can be modelt via 
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{frame}{Introduction: Fixed Point Analysis}
@@ -345,5 +429,9 @@ $x = (x_{1}, ..., x_{n})^{T}, \quad x_{i} \in \{0, 1\} \forall i$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 %TODO:
-%    - irreversable reactions in model
+%   - irreversable reactions in model
 %   - constraints for binary variables in IP 
+%	- use colors
+%   - MCS definition
+%	- NMF def.
+%	- Finds all solutions
