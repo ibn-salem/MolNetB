@@ -19,6 +19,7 @@
 \usefonttheme{default}
 \useinnertheme{circles}     %	{circles | default | inmargin |	rectangles | rounded}
 \useoutertheme{default} %	default | infolines | miniframes | shadow | sidebar | smoothbars |smoothtree | split | tree}
+\bibliographystyle{apalike}
 %\beamertemplatenavigationsymbolsempty   % disable navigation simbols
 %\bibliographystyle{apalike}
 %------- metainformation ---------%
@@ -108,7 +109,7 @@ integer programming couples elementary mode analysis with regulation\\~\\}
         
         \item $v \in C$ is an \emph{\textcolor{blue}{elementary flux mode}} if $supp(v)$
         is minimal w.r.t $\subseteq$
-        i.e, if there is no $v' \in C, v' \neq 0$ with 
+        i.e., if there is no $v' \in C, v' \neq 0$ with 
         $supp(v') \underset{\neq}{\subset} supp(v)$. % \subsetneq
 \pause
         \item Any $v \in C$ can be written as a non-negative linear 
@@ -124,7 +125,7 @@ integer programming couples elementary mode analysis with regulation\\~\\}
     \end{block}
     
     \begin{itemize}
-    	\item Elementary modes correspond to minimal biological pathways
+    	\item Elementary modes correspond to minimal biological pathways.
     \end{itemize}
     
 \end{frame}
@@ -202,7 +203,7 @@ integer programming couples elementary mode analysis with regulation\\~\\}
 	\end{itemize}
     
     \begin{block}{Goal}
-        Gene deletion strategie to optimize the production 
+        Gene deletion strategy to optimize the production 
         efficiency of strains.
     \end{block}
 
@@ -258,7 +259,7 @@ where $q = r+s+t$
 
 
 
-
+\bibliographystyle{apalike}
 \begin{frame}{List of binary EM sets}
     \includegraphics[width=\textwidth]{grafik/table1b}
 \pause    
@@ -320,7 +321,7 @@ subjected to
     \end{align*}
 \end{frame}
 
-
+\bibliographystyle{apalike}
 \begin{frame}{Find alternative solutions}
 \begin{itemize}
     \item The BLP may have no or a finite number of solutions.
@@ -357,15 +358,15 @@ subjected to
 \pause
     Solution: 
     \begin{itemize}
-        \item add weights to objective function
+        \item Add weights to objective function
         $$max \|w^T x\| $$
-        \item low weights for uptake reactions
-        \item high weights for reactions with missing genetic information
+        \item Low weights for uptake reactions
+        \item High weights for reactions with missing genetic information
     \end{itemize}
     \begin{example}
         $$w_2^T = (0.1, ~ 0.1, ~ 0.1, ~ 99, ~ 1, ~ 99, ~ 2, ~ 1, ~ 99, ~ 1, ~ 1, ~ 99)$$
     \end{example}
-\end{frame}
+\end{frame}\bibliographystyle{apalike}
 
 \begin{frame}{Minimal cut sets with weight-function}
     \includegraphics[height=5cm]{grafik/table2} \\
@@ -380,9 +381,9 @@ subjected to
 
 \begin{frame}{Including regulation}
 \begin{itemize}
-    \item Regulatory information can be modelled by Boolean functions
-    \item Each gene $g$ is represented by a logical variable $y_{g} \in \{0,1\}$
-    \item Boolean functions can be converted to inequalities
+    \item Regulatory information can be modelled by Boolean functions.
+    \item Each gene $g$ is represented by a logical variable $y_{g} \in \{0,1\}$.
+    \item Boolean functions can be converted to inequalities.
     \item New objective function 
     $$max \quad \|w_{2}^{T} x \| + \|y\| $$
     \begin{example}
@@ -431,23 +432,6 @@ isoenzyme \newline
     \includegraphics[width=1\textwidth]{grafik/table5}    
 \end{frame}
 
-\begin{frame}{Limitations of regulatory informations}
-\begin{itemize}
-    \item Only explicit Boolean functions can be modelled \\
-    e.g. $G \textcolor{green}{\mapsto} R \leadsto G -R = 0$ 
-    which is equivalent to  $G  \textcolor{red}{\iff} R$
-    \item Negative feedback loops cause infeasibility \\
-        \includegraphics[width=0.3\textwidth]{grafik/feedbackloop} \\
-        \tiny{source: Herranz et al. (2010) Genes \& development} \\
-        \normalsize
-\begin{align*}
-    A \mapsto B        & \quad \leadsto \quad A \iff B       & \quad \leadsto \quad A - B = 0 \\
-    B \mapsto \neg A   &  \quad \leadsto \quad  B \iff \neg A & \quad \leadsto \quad A + B = 1  \\
-\end{align*}
-
-\end{itemize}
-\end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Results of realistic example}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -464,7 +448,7 @@ isoenzyme \newline
 		\end{itemize}
 \pause
 	\begin{block}{Problem}
-		 Find optimal strain design with minimal number of knockouts 
+		 Find optimal strain design with minimal number of knockouts.
 	\end{block}
 \pause
 		\item BLP model:
@@ -478,8 +462,8 @@ isoenzyme \newline
 
 \begin{frame}{Results: Ethanol production in E. coli}
 	\begin{itemize}
-	\item Results in 1,048 MCS of which 252 had only 7 deletions
-	\item 71\% are not deletable due to missing annotations
+	\item Results in 1,048 MCS of which 252 had only 7 deletions.
+	\item 71\% are not deletable due to missing annotations.
 	\end{itemize}
 ~\\
 \pause
@@ -488,11 +472,12 @@ With weight function (models biological feasibility):
 		\item 8 alternative MCS with 7 feasible gene deletions		
 	\end{itemize}
 ~\\
-$\Rightarrow$ Outperforms an  experimentally implemented strain with 8 knockouts
+$\Rightarrow$ Outperforms an  experimentally implemented strain with 8 knockouts.
 \end{frame}
 
 \begin{frame}{Realistic example: Full model}
-    \includegraphics[height=.93\textheight]{grafik/fullmodel}
+    \includegraphics[height=.86\textheight]{grafik/fullmodel} \\
+    \tiny{source: Trinh et al. (2008) Applied and environmental microbiology}
 \end{frame}
 
 \begin{frame}{Realistic example: Full model}
@@ -519,30 +504,48 @@ $\Rightarrow$ Recovers the original model with anaerobic growth on glucose
 
 \begin{frame}{Complexity and runtime}
 \begin{itemize}
-	\item BLP is a special case of integer liner programming (ILP) which is NP-complete 
+	\item BLP is a special case of integer liner programming (ILP) which is NP-complete. 
 	\item Number of EM explodes combinatorially with system size \\
-	 $\Rightarrow$ EM analysis restricted to 
-	small scale networks with hundreds of reactions/variables
+	 $\Rightarrow$ EM analysis is restricted to 
+	small scale networks with hundreds of reactions/variables.
 \pause	
-    \item Efficient solvers available 
+    \item Efficient ILP solvers are available. 
     \item Compress redundant constraints in preprocessing step 
 	\begin{itemize}
 		\item Full \emph{E.coli} model: 420,276 constraints for 71 variables
 		\item Transformed into 28 constraints for 34 variables
 	\end{itemize}
 	\item Method is still scalable: \\
-	Finds all 2.304 MCS in model with 271 million EM in 122 seconds 
+	It finds all 2.304 MCS in model with 271 million EM in 122 seconds. 
 \end{itemize}
-$\Rightarrow$ Problem is the calculation of the all EM
+$\Rightarrow$ The problem is the calculation of all EM in the first place.
 \end{frame}
 
 %\begin{frame}{Limitations}
 %	\begin{itemize}
-%		\item Elementary modes have to be computed first
-%		\item Optimal EMs have to be known
 %		\item Some regulatory information like Feedback-Loops can not be modeled
 %	\end{itemize}
 %\end{frame}
+\begin{frame}{Limitations}
+\begin{itemize}
+    \item Elementary modes have to be computed first (\emph{efmtool}).
+    \item Optimal and unwanted EM have to be known.
+    \item Not all EM are considered. Unnecessary constraint definitions for tolerated EM. 
+%    \item Substrate cycles can not be modelled.
+    \item Only explicit Boolean functions can be modelled, \\
+    e.g. $G \textcolor{green}{\mapsto} R \leadsto G -R = 0$
+    which is equivalent to  $G  \textcolor{red}{\iff} R$.
+    \item Negative feedback loops cause infeasibility. \\
+        \includegraphics[width=0.3\textwidth]{grafik/feedbackloop} \\
+        \tiny{source: Herranz et al. (2010) Genes \& development} \\
+        \normalsize
+\begin{align*}
+    A \mapsto B        & \quad \leadsto \quad A \iff B       & \quad \leadsto \quad A - B = 0 \\
+    B \mapsto \neg A   &  \quad \leadsto \quad  B \iff \neg A & \quad \leadsto \quad A + B = 1  \\
+\end{align*}
+
+\end{itemize}
+\end{frame}
 
 
 
@@ -552,24 +555,40 @@ $\Rightarrow$ Problem is the calculation of the all EM
 \begin{frame}{Summary and conclusion}
 \begin{itemize}
     \item Elementary flux modes represent biological pathways 
-        in metabolic networks under steady state assumption
+        in metabolic networks under the steady state assumption.
+    \pause
     \item A minimal cut set (MCS) of reaction knockouts is needed to optimize 
-    metabolic engeniering like glucose production in bacterial strains
-    \item A simple integer linear program predicts minimal intervention strategies
-    \item A weight-function models Biological feasibility
+    metabolic engineering like glucose production in bacterial strains.
+    \pause
+    \item A simple integer linear program predicts minimal intervention strategies.
+    \pause
+    \item A weight-function models Biological feasibility.
+    \pause
     \item Regulatory information and gene-enzyme-reaction mapping 
-    can be included by additional variables and constraints
-    \item Evaluation on real data results in an improved design  
-    of an existing \emph{E.coli} strain
+    can be included by additional variables and constraints.
+    \pause
+    \item The evaluation on real data results in an improved design  
+    of an implemented \emph{E.coli} strain.
 \end{itemize}	
-\begin{block}{conclusion}
+\pause
+\begin{block}{Conclusion}
     Binary linear programming is a simple and flexible method for 
-    elementary flux mode analysis and strain design
+    elementary flux mode analysis and strain design.
 \end{block}
 \end{frame}
 
+\begin{frame}
+\begin{center}    
+    \nocite{Jungreuthmayer2012}
+    \large Thank you!
+\end{center}
+ ~ \\
+ ~ \\
+\normalsize
+Reference: \\
+\bibliography{uni}
 
-
+\end{frame}
 
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -577,12 +596,13 @@ $\Rightarrow$ Problem is the calculation of the all EM
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 %TODO:
-%   - irreversable reactions in model
-%   - constraints for binary variables in IP 
-%	- use colors
-%   - MCS definition
-%	- NMF def.
-%	- Finds all solutions
-%   - Limitations (in context?)
-%   - xout H constraints
-%   - check secound constraints by iteratrion
+%   # irreversable reactions in model
+%   # constraints for binary variables in IP 
+%	# use colors
+%   # MCS definition
+%	# NMF def.
+%	# Finds all solutions
+%   # Limitations (in context?)
+%   # xout H constraints
+%   - check second constraints by iteratrion
+%   # sources / other papaers
