@@ -251,8 +251,8 @@ integer programming couples elementary mode analysis with regulation\\~\\}
     Group them in three sets:
     \begin{align*}
         & (e_{1}, ..., e_{r})            &\text{\emph{goal set} with desirable EM}   &\\
-        & (e_{r+1}, ..., e_{r+s})        &\text{\emph{helper set} with tolerated EM}      &\\
-        & (e_{r+s+1}, ..., e_{r+s+t})    &\text{\emph{kill set} with unwanted EM}         &\\
+        & (e_{r+1}, ..., e_{r+s})        &\text{\emph{kill set} with unwanted EM}      &\\
+        & (e_{r+s+1}, ..., e_{r+s+t})    &\text{\emph{helper set} with tolerated EM}         &\\
     \end{align*}
 where $q = r+s+t$
 \end{frame}
@@ -282,10 +282,10 @@ subjected to
 \begin{align*}
     e^{T}_{g} x & =       \|e_{g}\|      & g \in \{1, ..., r\}     
     & \quad\text{\emph{(desirable EM)}}\\
-    e^{T}_{h} x & \leq    \|e_{h}\|     & h \in \{r+1, ..., r+s\} 
-    & \quad\text{\emph{(tolerated EM)}}\\
-    e^{T}_{k} x & \leq    \|e_{k}\|-1  & k \in \{r+s+1, ..., r+s+t\}
+    e^{T}_{k} x & \leq    \|e_{k}\|-1     & k \in \{r+1, ..., r+s\} 
     & \quad\text{\emph{(unwanted EM)}}\\
+    e^{T}_{h} x & \leq    \|e_{h}\|  & h \in \{r+s+1, ..., r+s+t\}
+    & \quad\text{\emph{(tolerated EM)}}\\
 \end{align*}
 
 %where
@@ -309,15 +309,15 @@ subjected to
 %\text{subject to}\quad\quad\quad\quad
     x_1 + x_4 + x_7 + x_8 + x_{12}                      & = 5   \\
     \\
-    x_3 + x_4 + x_8                                     & \leq 3 \\
-    x_3 + x_4 + x_5 + x_9 + x_{11}                      & \leq 5 \\
-    x_3 + x_4 + x_6 + x_7 + x_9 + x_{10}                & \leq 6 \\
-    x_1 + x_4 + x_5 + x_7 + x_9 + x_{11} + x_{12}       & \leq 7 \\
-    x_1 + x_4 + x_6 + x_9 + x_{10} + x_{12}             & \leq 6 \\
-    \\
+    x_1 + x_4 + x_5 + x_7 + x_8 + x_9 + x_{11} + x_{12} & \leq 7 \\
+    x_1 + x_4 + x_6 + x_9 + x_{10} + x_{12}             & \leq 5 \\
     x_1 + x_2 + x_4 + x_8                               & \leq 3 \\
     x_1 + x_2 + x_4 + x_5 + x_9 + x_{11}                & \leq 5 \\
     x_1 + x_2 + x_4 + x_6 + x_7 + x_9 + x_{10}          & \leq 6 \\
+    \\
+    x_3 + x_4 + x_8                                     & \leq 3 \\
+    x_3 + x_4 + x_5 + x_9 + x_{11}                      & \leq 5 \\
+    x_3 + x_4 + x_6 + x_7 + x_9 + x_{10}                & \leq 6 \\
     \end{align*}
 \end{frame}
 
@@ -454,8 +454,8 @@ isoenzyme \newline
 		\item BLP model:
 		\begin{itemize}
 			\item \emph{goal} set contains the 12 optimal EM
-			\item \emph{help} set is $\emptyset$
 			\item \emph{kill} set contains all remaining 4,998 EM
+			\item \emph{help} set is $\emptyset$
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -562,7 +562,7 @@ $\Rightarrow$ The problem is the calculation of all EM in the first place.
     \pause
     \item A simple integer linear program predicts minimal intervention strategies.
     \pause
-    \item A weight-function models Biological feasibility.
+    \item A weight function account for experimental difficulties in implementing a reaction deletion \emph{in vivo}.
     \pause
     \item Regulatory information and gene-enzyme-reaction mapping 
     can be included by additional variables and constraints.
