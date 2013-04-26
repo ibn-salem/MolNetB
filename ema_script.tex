@@ -1,0 +1,209 @@
+\documentclass{llncs}
+\usepackage{amsmath,amsfonts,amssymb}   %math. Symbole und Umgebungen
+\bibliographystyle{splncs}
+
+\title{Designing optimal cell factories:
+integer programming couples elementary mode analysis with regulation}
+\author{Jonas Ibn-Salem}
+\institute{}%Freie Universität Berlin}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is an extended abstract of a recent publication \cite{Jungreuthmayer2012}
+prepared for the Seminar "Molecular Networks B" SS 2013 supervised by 
+Prof. Dr. Alexander Bockmayr at the Free University Berlin.
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Background and introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%In metabolic engineering microbes can be used as production organism for 
+%the efficient utilization and production of metabolites.
+%Optimization of metabolic processes in living organism can be modelled by
+%constraint based methods.
+The rapidly growing body of molecular knowledge can be used to optimize
+metabolic engineering of living organisms 
+like the production of target metabolites by microbes.
+Such an optimization can be realized by deactivating unwanted pathways 
+through experimental gene deletions to design a strain of minimal functionality 
+that efficiently fulfill only the desired functions.
+ 
+Metabolic processes are formalized in metabolic networks for many organisms.
+Such a networks with $n$ reactions and $m$ internal metabolites
+is usually modelled by a stoichiometric matrix $S \in \bbbr^{m\times n}$, 
+a set of irreversible reactions $Irr \subseteq \{1, \dots, n \}$,
+and a flux vector $v \in \bbbr^{n}$, where $v_{i}$ describes the flux of
+reaction $i$ through the network. 
+Reasoned by the law of mass balance, the assumption that the metabolite 
+concentrations and reaction rates are constant leads to the steady state 
+flux coen $C = \{v \in \bbbr^n | Sv = 0, v_i \geq 0, i \in Irr \}$,
+which describes all possible flux vectors in the system.
+
+Metabolic functionality can be caracterized by \emph{elementary flux modes} (EM), 
+which correspond to meaningful biological pathways.
+For each $v \in \bbbr^{n}$ the support of $v$ is defined as  
+$supp(v) = \{i \in \{1, ..., n \} | v_i \neq 0  \}$.
+A flux vector $v \in C$ is an EM if $supp(v)$
+is minimal w.r.t $\subseteq$ i.e., if there is no $v' \in C, v' \neq 0$ 
+with $supp(v') \subsetneq supp(v)$.  
+Furthermore $e = e(v)$ is the binary transformation of a given EM $v$, where
+$e_{i} := 1$ if $v_{i} \neq  0$ and $e_{i} := 0$ if $v_{i} = 0$.
+%$e_{i} := 
+%        \begin{cases}
+%            1 & \text{if }  v_{i} \neq 0 \\
+%            0 & \text{if }  v_{i} = 0 
+%        \end{cases}$
+Therefore an EM is a minimal and indivisible set 
+of reactions that operates under steady state conditions, 
+while obeying all (ir-)reversibility constraints.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Methodology}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Problem definition}
+Given all $q = r+s+t$ elementary modes of a metabolic network and a specific design goal,
+the EMs can be grouped into three categories.
+The \emph{goal} set $\{e_{1}, ..., e_{r}\}$ contains all desirable EM that contribute 
+to the design criterion in an optimal way.
+The \emph{kill} set $\{e_{r+1}, ..., e_{r+s}\}$ contains all unwanted EM, 
+that have to be deleted from the network.
+Finally all other EM that are tolerated and may be active or inactive in 
+the target design are pooled in the \emph{helper} set $\{e_{r+s+1}, ..., e_{r+s+t}\}$.
+%The Problem is now to find a set of reaction deletions with minimal 
+%cardinality 
+The Problem is now to find a \emph{minimal cut set} (MCS) of reaction deletions 
+that inactivates all unwanted EM from the \emph{kill} set and leave the 
+EM from the \emph{goal} set active.
+
+\subsection{Binary linear program}
+The described problem can be formalized as an binary linear programm (BLP), 
+which is an integer linear program with binary variables.
+\begin{subequations}
+    \begin{align}
+        \max \quad  & ~\|x\|    \label{eq:objfunc}\\
+        \mbox{s.t.}\quad  & e^{T}_{g} x = \|e_{g}\| &\quad\quad g \in \{1, \dots, r\}   \label{eq:goal} \\
+        & e^{T}_{k} x \leq \|e_{k}\|-1     &\quad\quad k \in \{r+1, \dots, r+s\}  \label{eq:kill} \\
+        & e^{T}_{h} x \leq \|e_{h}\|       &\quad\quad h \in \{r+s+1, \dots, r+s+t\}  \label{eq:help} \\
+        & x = (x_{1}, ..., x_{n})^{T}, &\quad x_{i} \in \{0, 1\} \forall i
+        \end{align}
+\end{subequations}
+The solution vector $x$ is the binary representation of all reactions 
+participating in the designed minimal network and indicates whether a reaction
+$i$ can carry flux ($x_{i} = 1)$ or needs to be deleted ($x_{i} = 0$).
+Therefore the maximization of $\|x\| = \sum_{i=1}^{n} x_{i}$ is equivalent
+to minimizing the number of reaction knockouts $\Delta_{\min} = n - \|x\|$.
+The constraints in (\ref{eq:goal}) enforce the solution to keep the 
+EMs from the \emph{goal} set active. 
+Since inactivation of one reaction of an EM is sufficient to delete the
+entire EM, the constraints (\ref{eq:kill}) forbid EM from the \emph{kill} set.
+The constraints (\ref{eq:help}) are listed only for the sake of accounting completely for all EM
+and do not constrain the system in any way.
+ 
+The BLP may have no or a finite number of solutions.
+However, the constraints are relaxed, i.e. EM are shifted from the 
+\emph{goal} set to the \emph{helper} or \emph{kill} set,
+it is always possible to find at least one solution.
+To enumerate all optimal solutions one can add iteratively 
+two additional, so called \emph{no-good cut} constraints 
+\begin{subequations}
+    \begin{align}
+        \sum_{i \in B} x_i & \leq |B| -1  \\
+%        \text{\emph{\textcolor{blue}{"no-good cut"}}}\\
+        \sum_{i \in N} x_i & \geq 1       
+    \end{align}
+\end{subequations}, 
+where $B = \{i |x_{i}^{(j)} = 1\}$ and $N = \{i |x_{i}^{(j)} = 0\}$ to
+forbid the $j$-th solution $x^{(j)}$ and solve the BLP again.
+
+\subsection{Experimental feasibility}
+Since the gene-enzyme-reaction mapping is not for every reaction, it is 
+sometimes not possible to delete reactions from an optimal solution in
+in practice. Furthermore it is easier to delete uptake reactions, by simply
+removing the substrate from the medium, than internal reaction, for which the 
+gene has to be knocked out.
+To account for such experimental difficulties, a weight function can be
+added to the objective function (\ref{eq:objfunc})
+resulting in $\|w^{T}x\|$. 
+In general low weight for uptake reactions and high weights for reactions
+with missing genetic annotation, will favour the deletion of uptake reactions
+and prevent deletion of unannotated ones.
+
+\subsection{Including regulation}
+The mapping between genes, enzymes and reactions as well as transcriptional 
+regulatory information can be integrated as long as they are formulated 
+as static boolean functions. Each gene $g$ is represented by a logical variable 
+$y_{g} \in \{0,1\}$ indicating if the gene is active ($y_{g}=1$) or 
+deleted ($y_{g}=0$).
+Boolean functions can be converted into inequalities and included as 
+additional constrains to the BLP.
+For example a reaction $R$ may be catalysed by a complex of two proteins encoded
+by $G_{a}$ and $G_{b}$. The corresponding Boolean function 
+$G_{a} \land G_{b} \mapsto R$ is equivalent to the inequality 
+$0 \leq G_{a} + G_{b} - 2R \leq 1$.
+The new objective function $\|w_{2}^{T} x \| + \|y\|$ account for 
+the combined effect of both, gene and reaction knockouts.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results and Discussion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Evaluation on real data}
+
+The algorithm was applied to a previously published small scale 
+metabolic network of \emph{E. coli} under anaerobic conditions to 
+optimize the production of ethanol from glucose.
+From the entire 5,010 EM in the network, 12 contribute most efficiently
+to the ethanol production and where considered as \emph{goal} set. The
+remaining 4,998 EM where unwanted and pooled in the \emph{kill} set.
+The BLP methods result in 1,048 MCS of which 252 had the minimal number of
+seven deletions. 
+However 71\% of these solutions are not feasible due to
+missing annotations in eat least one reaction.
+To account for the experimental feasibility a weight function were applied,
+resulting in eight alternative MCS with 7 feasible solutions.
+Notably, an experimentally implemented strain with eight knockouts could
+be improved with this results.
+
+The analysis of a greater \emph{E.coli} model, without restriction to glucose uptake under
+anaerobic conditions, with 429,276 EM results in 55,488 MCS of which 1,440
+consists of minimal 11 reaction deletions.
+However none of theme are feasible.
+Applying a weight function results in a minimum of 12 feasible reaction 
+deletions, of which 5 are uptake reactions.
+Deleting these 5 uptake reactions by removing the substrate from the medium
+recovers the original model with anaerobic growth on glucose.
+
+\subsection{Complexity and runtime}
+
+Since the number of EM explodes combinatorially with system size,
+elementery mode analysis is restricted to small scale metabolic 
+networks with hundreds of reactions.
+The core of the presented method consist of a binary linear program which 
+is in general NP-complete.
+However efficient comercial and non-commercial solvers are available, 
+which are often able to compress redundant constraints and variables 
+in a preprocessing step.
+The method can therefore handle even larger datasets.
+In practice a model with 271 million EM finds successfully 2,304 MCS in 
+122 seconds.
+However, the computationally most expensive part is the computation of
+all EM in the first place.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Binary linear programming can be used for an efficient and easy to implement
+method to predict minimal intervention strategies for a strain design
+with desirable metabolic capabilities. 
+Experimental difficulties as well as regulatory information can easily be
+integrated into a single optimization problem by adding a weight function or 
+additional variables and constraints.
+Evaluation on real data show that the BLP method predicts biologically
+meaningful results in a short runtime.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliography{uni}
+
+\end{document}
+
